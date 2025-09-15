@@ -62,7 +62,7 @@ export default function ColorblindnessSimulator() {
       </svg>
 
       <section className="px-6 py-20 text-center">
-        <h1 className="mb-6 text-4xl font-bold bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">
+        <h1 className="mb-6 text-4xl font-bold text-teal-600 bg-clip-text">
           Farbfehlsichtigkeit Simulator
         </h1>
         <p className="mb-12 text-lg text-gray-600 max-w-2xl mx-auto">

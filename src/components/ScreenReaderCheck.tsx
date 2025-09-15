@@ -179,7 +179,7 @@ export const ScreenReaderCheck = () => {
   };
 
   return (
-    <section className="px-6 py-20">
+    <section className="px-6 py-20 text-center">
       <h2 className="mb-4 text-3xl font-bold text-teal-600">
         Screen Reader Check
       </h2>
