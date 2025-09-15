@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useRef, useEffect } from "react";
 
 export const EscapeRoom = () => {
@@ -13,6 +12,8 @@ export const EscapeRoom = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+
+  console.log("Focused Elements:", focusedElements);
 
   // --- Level 1 ---
   const handleSkip = (e: React.MouseEvent) => {
