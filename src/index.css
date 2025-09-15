@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+.protanopia {
+  filter: url(#protanopia);
+}
+
+.deuteranopia {
+  filter: url(#deuteranopia);
+}
+
+.tritanopia {
+  filter: url(#tritanopia);
+}
+
+.grayscale {
+  filter: grayscale(100%);
+}
