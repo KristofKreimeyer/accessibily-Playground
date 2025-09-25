@@ -115,7 +115,9 @@ export const EscapeRoom = () => {
       <h2 className="mb-6 text-3xl font-bold text-teal-600">
         Keyboard Accessibility Escape Room
       </h2>
-      <p className="mb-4 text-gray-600">Level {level} von 6</p>
+      <p className="mb-4 text-gray-600 dark:text-gray-100">
+        Level {level} von 6
+      </p>
 
       {/* Level 1 */}
       {level === 1 && (

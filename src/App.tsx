@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ColorblindnessSimulator from "./components/ColorblindnessSimulator";
 import { EscapeRoom } from "./components/EscapeRoom";
 import { ScreenReaderCheck } from "./components/ScreenReaderCheck";
@@ -7,12 +7,17 @@ import { PlaygroundHeader } from "./components/Header";
 function App() {
   const [darkMode, setDarkMode] = useState(false);
 
+  // Dark-Mode Toggle über <html>
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
+
   return (
-    <div
-      className={
-        darkMode ? "dark bg-gray-950 text-gray-100" : "bg-white text-gray-900"
-      }
-    >
+    <div className="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       <PlaygroundHeader darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <main className="pt-20 space-y-20">

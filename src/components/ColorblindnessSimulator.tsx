@@ -40,7 +40,7 @@ export default function ColorblindnessSimulator() {
   const selectedFilter = filters[selectedFilterIndex];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen transition-colors duration-500">
       {/* SVG Filter Definitionen */}
       <svg className="absolute h-0 w-0" aria-hidden="true">
         <defs>
@@ -65,7 +65,7 @@ export default function ColorblindnessSimulator() {
         <h1 className="mb-6 text-4xl font-bold text-teal-600 bg-clip-text">
           Farbfehlsichtigkeit Simulator
         </h1>
-        <p className="mb-12 text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="mb-12 text-lg text-gray-600 dark:text-gray-100 max-w-2xl mx-auto">
           Wähle ein Bild und simuliere verschiedene Arten von
           Farbfehlsichtigkeit, um zu verstehen, wie Menschen mit
           Farbsehschwächen die Welt wahrnehmen.
@@ -73,7 +73,7 @@ export default function ColorblindnessSimulator() {
 
         {/* Bildauswahl */}
         <div className="mb-8">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4 dark:text-gray-100">
             Bildauswahl
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
@@ -101,9 +101,11 @@ export default function ColorblindnessSimulator() {
 
         {/* Hauptbild */}
         <div className="mb-8">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">
+          <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
             Aktueller Filter:{" "}
-            <span className="text-teal-600">{selectedFilter.name}</span>
+            <span className="text-teal-700 dark:text-teal-400">
+              {selectedFilter.name}
+            </span>
           </h2>
           <motion.div
             key={selectedImage.src + selectedFilter.className}
@@ -123,7 +125,7 @@ export default function ColorblindnessSimulator() {
 
         {/* Filter Buttons */}
         <div className="mb-8">
-          <h2 className="text-xl font-semibold text-gray-800 mb-4">
+          <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
             Filter auswählen
           </h2>
           <div className="flex flex-wrap justify-center gap-3">
@@ -135,7 +137,7 @@ export default function ColorblindnessSimulator() {
                 aria-label={`Filter anwenden: ${filter.name}`}
                 className={`rounded-full px-6 py-3 font-medium shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 hover:shadow-lg ${
                   selectedFilterIndex === index
-                    ? "bg-teal-500 text-white shadow-teal-200"
+                    ? "bg-teal-700 text-white shadow-teal-200 hover:bg-teal-800"
                     : "bg-white text-gray-800 hover:bg-gray-50 border border-gray-200"
                 }`}
               >
@@ -155,7 +157,7 @@ export default function ColorblindnessSimulator() {
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="font-semibold text-green-600 mb-2">Deuteranopia</h3>
+            <h3 className="font-semibold text-green-700 mb-2">Deuteranopia</h3>
             <p className="text-gray-600 text-sm">
               Die häufigste Form der Farbblindheit. Schwierigkeit beim
               Unterscheiden von Grün- und Rottönen.

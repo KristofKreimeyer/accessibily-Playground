@@ -9,10 +9,10 @@ export const ScreenReaderCheck = () => {
   const [htmlInput, setHtmlInput] = useState<string>(
     `<h1>Willkommen</h1>
 <p>Dies ist ein Beispieltext.</p>
-<img src="bild.jpg" />
+<img alt="Bildbeschreibung" src="anna-tarazevich.jpg" />
 <a href="#">Mehr erfahren</a>
 <h3>Falsche Überschrift</h3>
-<button></button>`
+<button type="button">Abschicken</button>`
   );
 
   const [output, setOutput] = useState<string[]>([]);
@@ -180,10 +180,10 @@ export const ScreenReaderCheck = () => {
 
   return (
     <section className="px-6 py-20 text-center">
-      <h2 className="mb-4 text-3xl font-bold text-teal-600">
+      <h2 className="mb-4 text-3xl font-bold text-teal-600 dark:text-teal-400">
         Screen Reader Check
       </h2>
-      <p className="mb-6 text-gray-600">
+      <p className="mb-6 text-gray-600 dark:text-gray-300">
         Füge HTML ein, um zu sehen, wie Screenreader Inhalte linear lesen und
         welche Accessibility-Probleme es gibt.
       </p>
@@ -191,7 +191,7 @@ export const ScreenReaderCheck = () => {
       <div className="mb-4">
         <label
           htmlFor="html-input"
-          className="block text-sm font-medium text-gray-700 mb-2"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
         >
           HTML-Code eingeben:
         </label>
@@ -199,7 +199,7 @@ export const ScreenReaderCheck = () => {
           id="html-input"
           value={htmlInput}
           onChange={(e) => setHtmlInput(e.target.value)}
-          className="w-full rounded border p-3 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+          className="w-full rounded border border-gray-300 dark:border-gray-600 p-3 font-mono text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500"
           rows={8}
           placeholder="Hier HTML-Code eingeben..."
         />
@@ -207,7 +207,7 @@ export const ScreenReaderCheck = () => {
 
       <button
         onClick={handleAnalyze}
-        className="mt-4 rounded bg-teal-500 px-6 py-2 text-white hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-400 transition-colors"
+        className="mt-4 rounded bg-teal-800 dark:bg-teal-700 px-6 py-2 text-white hover:bg-teal-800 dark:hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-400 transition-colors"
       >
         Analysieren
       </button>
@@ -215,22 +215,26 @@ export const ScreenReaderCheck = () => {
       {/* Ergebnisbereich */}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         {/* Visuelle Vorschau */}
-        <div className="rounded border bg-white p-4 shadow">
-          <h3 className="mb-2 font-semibold">Visuelle Vorschau:</h3>
-          <div className="border rounded p-3 bg-gray-50">
+        <div className="rounded border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 p-4 shadow">
+          <h3 className="mb-2 font-semibold text-gray-900 dark:text-gray-100">
+            Visuelle Vorschau:
+          </h3>
+          <div className="border border-gray-200 dark:border-gray-600 rounded p-3 bg-gray-50 dark:bg-gray-700">
             <div
-              className="prose max-w-none"
+              className="prose max-w-none text-gray-900 dark:text-gray-100"
               dangerouslySetInnerHTML={{ __html: htmlInput }}
             />
           </div>
         </div>
 
         {/* Screenreader-Ausgabe */}
-        <div className="rounded border bg-gray-50 p-4 shadow">
-          <h3 className="mb-2 font-semibold">Linearisierte Ausgabe:</h3>
+        <div className="rounded border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 p-4 shadow">
+          <h3 className="mb-2 font-semibold text-gray-700 dark:text-gray-200">
+            Linearisierte Ausgabe:
+          </h3>
           {output.length > 0 ? (
-            <div className="max-h-64 overflow-y-auto border rounded bg-white p-3">
-              <ol className="list-decimal pl-6 text-left text-gray-700 space-y-1">
+            <div className="max-h-64 overflow-y-auto border border-gray-200 dark:border-gray-600 rounded bg-white dark:bg-gray-700 p-3">
+              <ol className="list-decimal pl-6 text-left text-gray-700 dark:text-gray-300 space-y-1">
                 {output.map((line, i) => (
                   <li key={i} className="text-sm">
                     {line}
@@ -239,16 +243,18 @@ export const ScreenReaderCheck = () => {
               </ol>
             </div>
           ) : (
-            <p className="text-gray-500">Noch keine Analyse durchgeführt.</p>
+            <p className="text-gray-500 dark:text-gray-400">
+              Noch keine Analyse durchgeführt.
+            </p>
           )}
 
           {/* Fehler & Warnungen */}
           {issues.length > 0 && (
-            <div className="mt-4 rounded border bg-red-50 p-3">
-              <h4 className="mb-2 font-semibold text-red-600">
+            <div className="mt-4 rounded border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-3">
+              <h4 className="mb-2 font-semibold text-red-600 dark:text-red-400">
                 Probleme gefunden ({issues.length}):
               </h4>
-              <ul className="list-none pl-0 text-left text-red-700 space-y-1">
+              <ul className="list-none pl-0 text-left text-red-700 dark:text-red-300 space-y-1">
                 {issues.map((issue, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span className="flex-shrink-0">
@@ -262,8 +268,8 @@ export const ScreenReaderCheck = () => {
           )}
 
           {issues.length === 0 && output.length > 0 && (
-            <div className="mt-4 rounded border bg-green-50 p-3">
-              <p className="text-green-600 font-semibold flex items-center gap-2">
+            <div className="mt-4 rounded border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20 p-3">
+              <p className="text-green-600 dark:text-green-400 font-semibold flex items-center gap-2">
                 <span>🎉</span>
                 <span>Keine Probleme gefunden!</span>
               </p>
