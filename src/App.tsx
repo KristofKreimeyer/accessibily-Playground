@@ -5,6 +5,7 @@ import { ScreenReaderCheck } from "./components/ScreenReaderCheck";
 import { PlaygroundHeader } from "./components/Header";
 import KeyboardNavCheckOverlay from "./components/KeyboardNavCheckOverlay";
 import ContrastChecker from "./components/ContrastChecker";
+import ResponsiveZoomTest from "./components/ResponsiveZoomTest";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -37,6 +38,9 @@ function App() {
         </section>
         <section id="contrast">
           <ContrastChecker />
+        </section>
+        <section id="responsiveZoom">
+          <ResponsiveZoomTest />
         </section>
       </main>
     </div>
