@@ -4,6 +4,7 @@ import { EscapeRoom } from "./components/EscapeRoom";
 import { ScreenReaderCheck } from "./components/ScreenReaderCheck";
 import { PlaygroundHeader } from "./components/Header";
 import KeyboardNavCheckOverlay from "./components/KeyboardNavCheckOverlay";
+import ContrastChecker from "./components/ContrastChecker";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -33,6 +34,9 @@ function App() {
         </section>
         <section id="keyboardCheck">
           <KeyboardNavCheckOverlay hotkey="Ctrl+Alt+K" />
+        </section>
+        <section id="contrast">
+          <ContrastChecker />
         </section>
       </main>
     </div>
