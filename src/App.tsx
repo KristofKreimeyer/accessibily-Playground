@@ -3,6 +3,7 @@ import ColorblindnessSimulator from "./components/ColorblindnessSimulator";
 import { EscapeRoom } from "./components/EscapeRoom";
 import { ScreenReaderCheck } from "./components/ScreenReaderCheck";
 import { PlaygroundHeader } from "./components/Header";
+import KeyboardNavCheckOverlay from "./components/KeyboardNavCheckOverlay";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -29,6 +30,9 @@ function App() {
         </section>
         <section id="screenreader">
           <ScreenReaderCheck />
+        </section>
+        <section id="keyboardCheck">
+          <KeyboardNavCheckOverlay hotkey="Ctrl+Alt+K" />
         </section>
       </main>
     </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { cx, dl } from "../utils/helper";
 import { FaBars, FaTimes } from "react-icons/fa";
+import ShortcutHint from "./ShortCutHint";
 
 interface PlaygroundHeaderProps {
   darkMode: boolean;
@@ -72,6 +73,8 @@ export const PlaygroundHeader = ({
           >
             {darkMode ? "🌞 Light" : "🌙 Dark"}
           </button>
+
+          <ShortcutHint hotkey="Ctrl+Alt+K" />
 
           {/* Burger Button */}
           <button
